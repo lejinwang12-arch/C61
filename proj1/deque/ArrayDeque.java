@@ -10,7 +10,7 @@ public class ArrayDeque<LochNess> {
         items = (LochNess[]) new Object[8];
         size = 0;
         nextfirst = 3;
-        nextlast = 6;
+        nextlast = 4;
     }
 
     public void addFirst(LochNess item) {
@@ -93,6 +93,8 @@ public class ArrayDeque<LochNess> {
             index = getBack(index);
         }
         this.items = temp;
+        nextfirst = capacity -1;
+        nextlast = size;
         }
 
     private int getFront(int index){
