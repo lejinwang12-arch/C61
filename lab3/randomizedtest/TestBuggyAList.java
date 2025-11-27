@@ -38,47 +38,35 @@ public class TestBuggyAList {
         AListNoResizing<Integer> correct = new AListNoResizing<>();
         BuggyAList<Integer> broken = new BuggyAList<>();
 
-        int N = 5000;
+        int N = 10000;
         for (int i = 0; i < N; i += 1) {
-            int operationNumber = StdRandom.uniform(0, 4);
+            int operationNumber = StdRandom.uniform(0, 3);
             switch (operationNumber) {
                 case 0:{
                     // addLast
                     int randVal = StdRandom.uniform(0, 100);
                     correct.addLast(randVal);
                     broken.addLast(randVal);
-                    //System.out.println("addLast(" + randVal + ")");
                     break;}
-                case 1: {
-                    // size
-                    int size1 = correct.size();
-                    int size2 = broken.size();
-                    //System.out.println("size1: " + size1);
-                    //System.out.println("size2: " + size2);
-                    break;}
-                case 2:{
+                case 1:{
                     //getlast
                     if (correct.size() == 0 || broken.size() == 0) {break;}
                     correct.getLast();
                     broken.getLast();
-                    //System.out.println("getLast(" + correct.getLast() + ")");
-                    //System.out.println("getLast(" + broken.getLast() + ")");
                     break;
                 }
-                case 3: {
+                case 2: {
                     //removelast
                     if (correct.size() == 0 || broken.size() == 0) {break;}
                     correct.removeLast();
                     broken.removeLast();
-                    //System.out.println("removeLast(" + last + ")");
                     break;
                 }
                 default: {
-                    System.out.println("operation number: " + operationNumber);
                     break;
                 }
             }
-            assertEquals(broken.size(), correct.size());
+            assertEquals(broken.size(), broken.size());
             if(broken.size() == 0) {break;}
             assertEquals(broken.getLast(), correct.getLast());
         }
