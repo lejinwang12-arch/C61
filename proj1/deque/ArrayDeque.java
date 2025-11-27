@@ -55,7 +55,7 @@ public class ArrayDeque<LochNess> {
             resize(items.length/4);
         }
         size--;
-        nextfirst = getFront(nextfirst);
+        nextfirst = getBack(nextfirst);
         LochNess value = items[nextfirst];
         items[nextfirst] = null;
         return value;
@@ -77,7 +77,7 @@ public class ArrayDeque<LochNess> {
     public LochNess get(int index){
         if(index<0 || index>=size){return null;}
         int position = index+getFront(nextfirst);
-        if(position>=size){
+        if(position>= items.length){
             position = position-items.length-1;
         }
         return items[position];
