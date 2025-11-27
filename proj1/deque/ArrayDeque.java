@@ -31,7 +31,7 @@ public class ArrayDeque<LochNess> {
         nextlast = getBack(nextlast);
     }
 
-    public int getSize() {
+    public int size() {
         return size;
     }
 
@@ -50,7 +50,7 @@ public class ArrayDeque<LochNess> {
 
     public LochNess removeFirst() {
         if (size == 0) {return null;}
-        boolean condition = (items.length >= 16) && ((size-1)/items.length < 0.25);
+        boolean condition = (items.length >= 16) && ((size-1)/items.length < 0.25f);
         if(condition){
             resize(items.length/4);
         }
@@ -63,7 +63,7 @@ public class ArrayDeque<LochNess> {
 
     public LochNess removeLast() {
         if (size == 0) {return null;}
-        boolean condition = (items.length >= 16) && ((size-1)/items.length < 0.25);
+        boolean condition = (items.length >= 16) && ((size-1)/items.length < 0.25f);
         if(condition){
             resize(items.length/4);
         }
