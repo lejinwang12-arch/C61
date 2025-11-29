@@ -77,8 +77,8 @@ public class ArrayDeque<LochNess> {
     public LochNess get(int index){
         if(index<0 || index>=size){return null;}
         int position = index+getBack(nextfirst);
-        if(position>= items.length){
-            position = position-items.length-1;
+        if(position >= items.length){
+            position = position-items.length;
         }
         return items[position];
     }
