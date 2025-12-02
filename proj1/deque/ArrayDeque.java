@@ -1,6 +1,6 @@
 package deque;
 
-public class ArrayDeque<LochNess> {
+public class ArrayDeque<LochNess> implements Deque <LochNess> {
     private LochNess[] items;
     private int size;
     private int nextfirst;
@@ -12,7 +12,7 @@ public class ArrayDeque<LochNess> {
         nextfirst = 3;
         nextlast = 4;
     }
-
+    @Override
     public void addFirst(LochNess item) {
         if (size == items.length) {
             resize(4*items.length);
@@ -21,7 +21,7 @@ public class ArrayDeque<LochNess> {
         items[nextfirst] = item;
         nextfirst = getFront(nextfirst);
     }
-
+    @Override
     public void addLast(LochNess item) {
         if (size == items.length) {
             resize(4*items.length);
@@ -30,15 +30,12 @@ public class ArrayDeque<LochNess> {
         items[nextlast] = item;
         nextlast = getBack(nextlast);
     }
-
+    @Override
     public int size() {
         return size;
     }
 
-    public boolean isEmpty() {
-        return size == 0;
-    }
-
+    @Override
     public void printDeque() {
         int index =getBack(nextfirst);
        for (int i = 0; i < size; i++) {
@@ -47,10 +44,10 @@ public class ArrayDeque<LochNess> {
        }
        System.out.println();
     }
-
+    @Override
     public LochNess removeFirst() {
         if (size == 0) {return null;}
-        boolean condition = (items.length >= 16) && ((size-1)/items.length < 0.25f);
+        boolean condition = (items.length >= 16) && (items.length/(size-1)>4);
         if(condition){
             resize(items.length/4);
         }
@@ -60,10 +57,10 @@ public class ArrayDeque<LochNess> {
         items[nextfirst] = null;
         return value;
     }
-
+    @Override
     public LochNess removeLast() {
         if (size == 0) {return null;}
-        boolean condition = (items.length >= 16) && ((size-1)/items.length < 0.25f);
+        boolean condition = (items.length >= 16) && (items.length/(size-1)>4);
         if(condition){
             resize(items.length/4);
         }
@@ -73,7 +70,7 @@ public class ArrayDeque<LochNess> {
         items[nextlast] = null;
         return value;
     }
-
+    @Override
     public LochNess get(int index){
         if(index<0 || index>=size){return null;}
         int position = index+getBack(nextfirst);

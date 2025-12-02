@@ -1,6 +1,6 @@
 package deque;
 
-public class LinkedListDeque<LochNess> {
+public class LinkedListDeque<LochNess> implements Deque <LochNess> {
 
     /*creat IntNode class*/
     private class stuffNode{
@@ -28,27 +28,24 @@ public class LinkedListDeque<LochNess> {
     }
 
 
-
+    @Override
     public void addFirst(LochNess value){
         size += 1;
         sentinel.next = new stuffNode(value,sentinel,sentinel.next);
         if(size==1){sentinel.prev = sentinel.next;}
     }
-
+    @Override
     public  void addLast(LochNess value){
         size += 1;
         sentinel.prev = new stuffNode(value,sentinel.prev,sentinel);
         sentinel.prev.prev.next = sentinel.prev;
     }
-
+    @Override
     public int size(){
         return size;
     }
 
-    public boolean isEmpty(){
-        return size==0;
-    }
-
+    @Override
     public void printDeque(){
         stuffNode temp = sentinel.next;
         for(int i=0;i<size;i++){
@@ -58,7 +55,7 @@ public class LinkedListDeque<LochNess> {
         System.out.println();
 
     }
-
+    @Override
     public LochNess removeFirst(){
         if(size==0){
             return null;
@@ -71,7 +68,7 @@ public class LinkedListDeque<LochNess> {
         }
 
     }
-
+    @Override
     public LochNess removeLast(){
         if(size==0){
             return null;
@@ -83,7 +80,7 @@ public class LinkedListDeque<LochNess> {
             return last;
         }
     }
-
+    @Override
     public LochNess get(int index){
         stuffNode temp = sentinel.next;
         for(int i=0;i<index;i++){
