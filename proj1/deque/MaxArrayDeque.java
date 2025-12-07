@@ -14,7 +14,7 @@ public class MaxArrayDeque<LochNess> extends ArrayDeque<LochNess>{
         return max(comparator);
     }
 
-    private LochNess max(Comparator<LochNess> c) {
+    public LochNess max(Comparator<LochNess> c) {
         if (isEmpty()) {return null;}
         LochNess maxElement = null;
         for(LochNess element : this){

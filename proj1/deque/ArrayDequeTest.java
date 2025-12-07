@@ -113,10 +113,4 @@ public class ArrayDequeTest {
 
     }
 
-    @Test
-    public void TimeTest() {
-        TimeArrayDeque.timeAListConstruction();
-        assert (true);
-    }
-
     }
