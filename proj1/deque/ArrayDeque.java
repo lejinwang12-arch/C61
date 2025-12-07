@@ -1,6 +1,9 @@
 package deque;
 
-public class ArrayDeque<LochNess> implements Deque <LochNess> {
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
+public class ArrayDeque<LochNess> implements Deque <LochNess> ,Iterable<LochNess> {
     private LochNess[] items;
     private int size;
     private int nextfirst;
@@ -78,6 +81,39 @@ public class ArrayDeque<LochNess> implements Deque <LochNess> {
             position = position-items.length;
         }
         return items[position];
+    }
+    public boolean equals(Object o){
+        if(this == o){return true;}
+        ArrayDeque<?> other = (ArrayDeque<?>) o;
+        if(size != other.size){return false;}
+        for(int i = 0; i < size; i++){
+            if(!items[i].equals(other.items[i])){return false;}
+        }
+        return true;
+    }
+
+    public Iterator<LochNess> iterator(){
+        return new ArrayDequeIterator();
+    }
+
+    private class ArrayDequeIterator implements Iterator<LochNess> {
+        private int currentIndex;
+        public ArrayDequeIterator() {
+            currentIndex = 0;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return currentIndex < size;
+        }
+
+        @Override
+        public LochNess next() {
+            if(!hasNext()){
+                throw new NoSuchElementException();
+            }
+            return  items[currentIndex++];
+        }
     }
 
     //resize
