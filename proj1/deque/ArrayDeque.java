@@ -68,7 +68,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
             return null;
         }
         boolean condition = (items.length >= 16) && (items.length / (size - 1) > 4);
-        if(condition) {
+        if (condition) {
             resize(items.length / 4);
         }
         size--;
@@ -79,10 +79,10 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
     }
     @Override
     public T get(int index) {
-        if (index<0 || index>=size) {
+        if (index < 0 || index >= size) {
             return null;
         }
-        int position = index+getBack(nextfirst);
+        int position = index + getBack(nextfirst);
         if (position >= items.length) {
             position = position - items.length;
         }
@@ -95,8 +95,10 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         if (!(o instanceof ArrayDeque)) {
             return false;
         }
-        if (o == null) { return false; }
-        ArrayDeque<?> other = (ArrayDeque<?>) o;
+        if (o == null) {
+            return false;
+        }
+        ArrayDeque<T> other = (ArrayDeque<T>) o;
         if (size != other.size) {
             return false;
         }
@@ -114,7 +116,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
 
     private class ArrayDequeIterator implements Iterator<T> {
         private int currentIndex;
-        public ArrayDequeIterator() {
+        ArrayDequeIterator() {
             currentIndex = 0;
         }
 
@@ -137,28 +139,28 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         T[] temp = (T[]) new Object[capacity];
         int index = getBack(nextfirst);
 
-        for(int i = 0; i < size; i++) {
+        for (int i = 0; i < size; i++) {
             temp[i] = items[index];
             index = getBack(index);
         }
         this.items = temp;
-        nextfirst = capacity -1;
+        nextfirst = capacity - 1;
         nextlast = size;
         }
 
     private int getFront(int index) {
         if (index == 0) {
-            return items.length-1;
+            return items.length - 1;
         } else {
-            return index-1;
+            return index - 1;
         }
     }
 
     private int getBack(int index) {
-        if (index == items.length-1) {
+        if (index == items.length - 1) {
             return 0;
         } else {
-            return index+1;
+            return index + 1;
         }
     }
 
