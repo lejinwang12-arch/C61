@@ -17,6 +17,9 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
     }
     @Override
     public void addFirst(T item) {
+        if (item == null) {
+            return;
+        }
         if (size == items.length) {
             resize(4 * items.length);
         }
@@ -26,6 +29,9 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
     }
     @Override
     public void addLast(T item) {
+        if (item == null) {
+            return;
+        }
         if (size == items.length) {
             resize(4 * items.length);
         }

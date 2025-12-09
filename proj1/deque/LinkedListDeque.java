@@ -70,26 +70,33 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
     public T removeFirst() {
         if (size == 0) {
             return null;
-        } else {
-            size -= 1;
-            T first = sentinel.next.item;
+        }
+        T first = sentinel.next.item;
+        if (size == 1) {
+            sentinel.prev = sentinel;
+            sentinel.next = sentinel;
+        } else  {
             sentinel.next = sentinel.next.next;
             sentinel.next.prev = sentinel;
-            return first;
         }
-
+        size--;
+        return first;
     }
     @Override
     public T removeLast() {
         if (size == 0) {
             return null;
-        } else {
-            size -= 1;
-            T last = sentinel.prev.item;
+        }
+        T last = sentinel.prev.item;
+        if (size == 1) {
+            sentinel.prev = sentinel;
+            sentinel.next = sentinel;
+        } else  {
             sentinel.prev = sentinel.prev.prev;
             sentinel.prev.next = sentinel;
-            return last;
         }
+        size--;
+        return last;
     }
     @Override
     public T get(int index) {
@@ -110,8 +117,8 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
         if (o == null) {
             return false;
         }
-        LinkedListDeque<T> other = (LinkedListDeque<T>) o;
-        if (size != other.size) {
+        Deque<T> other = (Deque<T>) o;
+        if (size != other.size()) {
             return false;
         }
         for (int i = 0; i < size; i++) {
