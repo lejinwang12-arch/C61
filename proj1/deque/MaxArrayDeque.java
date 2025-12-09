@@ -2,24 +2,24 @@ package deque;
 
 import java.util.Comparator;
 
-public class MaxArrayDeque<LochNess> extends ArrayDeque<LochNess> {
-    private Comparator<LochNess> comparator;
+public class MaxArrayDeque<T> extends ArrayDeque<T> {
+    private Comparator<T> comparator;
 
-    public MaxArrayDeque(Comparator<LochNess> c) {
+    public MaxArrayDeque(Comparator<T> c) {
         super();
         this.comparator = c;
     }
 
-    public LochNess max() {
+    public T max() {
         return max(comparator);
     }
 
-    public LochNess max(Comparator<LochNess> c) {
+    public T max(Comparator<T> c) {
         if (isEmpty()) {
             return null;
         }
-        LochNess maxElement = null;
-        for(LochNess element : this) {
+        T maxElement = null;
+        for (T element : this) {
             if (maxElement == null || c.compare(element, maxElement) > 0) {
                 maxElement = element;
             }

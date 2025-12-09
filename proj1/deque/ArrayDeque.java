@@ -92,7 +92,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof ArrayDeque)) {
+        if (!(o instanceof Deque)) {
             return false;
         }
         if (o == null) {
@@ -146,7 +146,7 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         this.items = temp;
         nextfirst = capacity - 1;
         nextlast = size;
-        }
+    }
 
     private int getFront(int index) {
         if (index == 0) {

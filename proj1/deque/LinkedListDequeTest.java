@@ -122,4 +122,12 @@ public class LinkedListDequeTest {
         }
 
     }
+
+    @Test
+    public void addNullTest() {
+        LinkedListDeque<Integer> lld1 = new LinkedListDeque<>();
+        lld1.addFirst(null);
+        lld1.addLast(123);
+        assertEquals("should be 1", 1, lld1.size() );
+    }
 }

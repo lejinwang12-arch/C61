@@ -3,7 +3,7 @@ package deque;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class LinkedListDeque<T> implements Deque<T> {
+public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
 
     /*creat IntNode class*/
     private class StuffNode {
@@ -33,6 +33,9 @@ public class LinkedListDeque<T> implements Deque<T> {
 
     @Override
     public void addFirst(T value) {
+        if (value == null) {
+            return;
+        }
         size += 1;
         sentinel.next = new StuffNode(value, sentinel, sentinel.next);
         if (size == 1) {
@@ -41,6 +44,9 @@ public class LinkedListDeque<T> implements Deque<T> {
     }
     @Override
     public  void addLast(T value) {
+        if (value == null) {
+            return;
+        }
         size += 1;
         sentinel.prev = new StuffNode(value, sentinel.prev, sentinel);
         sentinel.prev.prev.next = sentinel.prev;
@@ -95,10 +101,10 @@ public class LinkedListDeque<T> implements Deque<T> {
     }
 
     public boolean equals(Object o) {
-        if(this == o) {
+        if (this == o) {
             return true;
         }
-        if (!(o instanceof LinkedListDeque)) {
+        if (!(o instanceof Deque)) {
             return false;
         }
         if (o == null) {
