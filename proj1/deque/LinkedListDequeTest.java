@@ -3,7 +3,6 @@ package deque;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-
 /** Performs some basic linked list tests. */
 public class LinkedListDequeTest {
 
@@ -124,10 +123,15 @@ public class LinkedListDequeTest {
     }
 
     @Test
-    public void addNullTest() {
-        ArrayDeque<Integer> lld1 = new ArrayDeque<>();
-        lld1.addFirst(null);
-        lld1.addLast(123);
-        assertEquals("should be 1", 1, lld1.size() );
+    public void debugTest() {
+        LinkedListDeque<Integer> lld1 = new LinkedListDeque<>();
+
+        lld1.addLast(442);
+        lld1.removeLast();
+        lld1.addFirst(767);
+
+        assertEquals(767, (int)lld1.removeLast());
+
     }
+
 }
