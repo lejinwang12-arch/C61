@@ -86,16 +86,13 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
     @Override
     public T get(int index) {
         StuffNode temp = sentinel.next;
-        if (index > size - 1) {
+        if (index < 0 || index >= size) {
             return null;
-        } else {
-            int i = 0;
-            while(i < index) {
-                temp = temp.next;
-                i = i + 1;
-            }
-            return temp.item;
         }
+        for (int i = 0; i < index; i++) {
+            temp = temp.next;
+        }
+        return temp.item;
     }
 
 
@@ -131,7 +128,7 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
 
         @Override
         public boolean hasNext() {
-            return current.next != sentinel;
+            return current != sentinel;
         }
         @Override
         public T next() {
@@ -145,7 +142,7 @@ public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
     }
 
     public T getRecursive(int index) {
-        if (index > size - 1) {
+        if (index < 0 || index >= size) {
             return null;
         } else {
             return getItem(sentinel.next, index);

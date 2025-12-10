@@ -3,7 +3,6 @@ package deque;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-import java.util.Deque;
 import java.util.Random;
 
 public class ArrayDequeRandomizedTest {
@@ -71,6 +70,9 @@ public class ArrayDequeRandomizedTest {
                         assertEquals(ops.toString(), refVal, student.get(index));
                         assertEquals(ops.toString(), refVal, studentLL.get(index));
                     }
+                    break;
+
+                default:
                     break;
             }
 
