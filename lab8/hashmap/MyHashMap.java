@@ -182,7 +182,7 @@ public class MyHashMap<K, V> implements Map61B<K, V> {
         Set<K> keys = new HashSet<>();
         for (Collection<Node> bucket : buckets) {
             for (Node node : bucket) {
-                keySet.add(node.key);
+                keys.add(node.key);
             }
         }
         return keys;
